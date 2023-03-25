@@ -9,6 +9,8 @@ https://user-images.githubusercontent.com/22154737/227735653-254f7f95-541c-4278-
 
 https://user-images.githubusercontent.com/22154737/227735720-3955ae6c-c90b-42ca-94a9-2d76e3c2dfdf.mov
 
+<img width="1114" alt="Screenshot 2023-03-25 at 22 17 38" src="https://user-images.githubusercontent.com/22154737/227737134-36e4c8cd-c185-40b6-a924-7b04654d044b.png">
+
 
 План:
 
