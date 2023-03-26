@@ -1,6 +1,11 @@
 # adfmp1h23-crocodile
 
+Приложение: частично работающий UI
 
+https://user-images.githubusercontent.com/22154737/227778749-d5ec4f0d-4122-4415-a0e8-674fd48c9e79.mov
+
+
+Макет
 
 https://user-images.githubusercontent.com/22154737/227735653-254f7f95-541c-4278-9242-d3492009f47e.mov
 
