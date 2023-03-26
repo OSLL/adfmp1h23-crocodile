@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="start">Start time</string>
+    <string name="Back">Назад</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="long_string">\u2022 You have to use facial expressions, gestures or dancing to explain to your teammates in 1 minute the word on the phone screen, without making a sound. \n\n\u2022 As soon as your team guesses the word, press \"Croco\". \n\n \u2022 You can skip the word by pressing \"Skip\". \n\n\u2022 To pass the initiative to the other team early, press \"Stop\". \n\n \u2022 The team with the most points wins. \n\n \n\n Authors: Anvar Tliamov</string>
 </resources>
