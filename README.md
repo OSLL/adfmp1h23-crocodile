@@ -9,9 +9,6 @@ https://user-images.githubusercontent.com/22154737/229360419-0ae36464-b694-4719-
 
 https://www.figma.com/file/Rg9foSqbSCnaXLQRs1oRaX/Croco?node-id=0%3A1&t=rnProNHS9xUChL43-1
 
-# Просто Hello World
-
-https://user-images.githubusercontent.com/22154737/227735653-254f7f95-541c-4278-9242-d3492009f47e.mov
 
 # Объяснение функций
 
