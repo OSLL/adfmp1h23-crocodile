@@ -1,4 +1,4 @@
-# adfmp1h23-crocodile
+# adfmp1h23-crocodile: тег 0.8
 
 Тег: 0.8
 
