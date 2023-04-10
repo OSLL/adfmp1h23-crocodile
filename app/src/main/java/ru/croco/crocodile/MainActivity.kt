@@ -7,6 +7,7 @@ import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -15,7 +16,6 @@ import androidx.preference.PreferenceManager
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rocketAnimation: AnimationDrawable
     val db = DatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +23,8 @@ class MainActivity : AppCompatActivity() {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
         setContentView(R.layout.start)
 
-        imageView.apply {
-            setBackgroundResource(R.drawable.main_animation)
-            rocketAnimation = background as AnimationDrawable
-        }
+        imageView.setBackgroundResource(R.drawable.main_animation)
+
         creatorDatabase()
         functionalityOfButtons()
     }
@@ -76,14 +74,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         startButton.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-
+            val intent = Intent(this, TeamNameActivity::class.java)
+            val frameAnimation: AnimationDrawable = imageView.getBackground() as AnimationDrawable
             tap.animate().apply {
                 tap.visibility = View.GONE
                 duration = 650
-                rocketAnimation.start()
+                frameAnimation.start()
             }.withEndAction {
-                rocketAnimation.stop()
+                frameAnimation.stop()
                 startActivity(intent)
             }.start()
         }

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="10dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="10dp" />
+
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/short_stack"
+        android:text="Hello"
+        android:textColor="#0752E4"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
+        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
+        app:layout_constraintStart_toStartOf="@id/left_guideLine"
+        app:layout_constraintTop_toTopOf="@id/top_guideLine" />
+
+    <TextView
+        android:id="@+id/team1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/short_stack"
+
+        android:text="Team 1"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
+        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
+
+        app:layout_constraintStart_toStartOf="@id/left_guideLine"
+        app:layout_constraintTop_toBottomOf="@+id/hello" />
+
+    <EditText
+        android:id="@+id/editTextTeam1"
+        android:layout_width="219dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:background="#D9D9D9"
+        android:fontFamily="@font/short_stack"
+
+        android:gravity="center"
+        android:text="Team 1"
+        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
+        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
+        app:layout_constraintStart_toStartOf="@id/left_guideLine"
+        app:layout_constraintTop_toBottomOf="@+id/team1" />
+
+    <TextView
+        android:id="@+id/team2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/short_stack"
+
+        android:text="Team 2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTeam1" />
+
+    <EditText
+        android:id="@+id/editTextTeam2"
+        android:layout_width="219dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="83dp"
+        android:background="#D9D9D9"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:text="Team 2"
+        app:layout_constraintBottom_toTopOf="@+id/startButton2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
+        app:layout_constraintTop_toBottomOf="@+id/team2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/countWords"
+        android:layout_width="67dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="152dp"
+        android:background="#D9D9D9"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:hint="100"
+        android:text="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
+        app:layout_constraintEnd_toStartOf="@+id/time"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTeam2"
+        app:layout_constraintVertical_bias="0.876" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="67dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="43dp"
+        android:background="#D9D9D9"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:hint="100"
+        android:text="6"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/countWords"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/countWords"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/short_stack"
+        android:text="Count words"
+        app:layout_constraintBottom_toTopOf="@+id/countWords"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/short_stack"
+        android:text="Time"
+        app:layout_constraintBottom_toTopOf="@+id/time"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTeam2"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTeam2"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <Button
+        android:id="@+id/startButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="28dp"
+
+        android:backgroundTint="#78CD7B"
+
+        android:fontFamily="@font/short_stack"
+        android:text="start"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guideLine"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/left_guideLine"
+        app:layout_constraintRight_toLeftOf="@id/right_guideLine" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

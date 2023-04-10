@@ -58,226 +58,179 @@
 
         android:src="@drawable/book"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/player1_gameOnline"
         app:layout_constraintLeft_toLeftOf="@id/left_guideLine"
         app:layout_constraintRight_toLeftOf="@id/settings"
         app:layout_constraintStart_toStartOf="@id/left_guideLine"
-        app:layout_constraintTop_toTopOf="@id/top_guideLine"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@id/top_guideLine" />
 
     <TextView
         android:id="@+id/main_word"
         android:layout_width="296dp"
         android:layout_height="73dp"
-        android:layout_marginStart="32dp"
         android:background="#B0C4FD"
 
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/short_stack"
         android:lineSpacingExtra="8sp"
         android:shadowColor="#573434"
         android:text="word"
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:gravity="center"
         android:textColor="#000000"
         android:textDirection="firstStrongRtl"
         android:textSize="44sp"
         android:textStyle="bold|italic"
         android:typeface="sans"
 
-        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
         app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
         app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
         app:layout_constraintTop_toBottomOf="@+id/top_guideLine"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
-        />
+        app:layout_constraintVertical_bias="0.499" />
+
 
     <TextView
         android:id="@+id/tips_of_word"
         android:layout_width="307dp"
         android:layout_height="141dp"
         android:background="#FFFFFF"
-        android:text="Hello, Friend!!!"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:text="Tips"
+
 
         android:textAlignment="center"
         android:textColor="#0C0C0C"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
         app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
 
-        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
         app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
         app:layout_constraintStart_toStartOf="@+id/left_guideLine"
         app:layout_constraintTop_toBottomOf="@+id/main_word"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <TextView
-        android:id="@+id/player1_timer"
-        android:layout_width="141dp"
-        android:layout_height="37dp"
-        android:text=""
-
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#0041B6"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/player2_timer"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/player1Tablo"
-        app:layout_constraintTop_toBottomOf="@+id/settings"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/player2_timer"
-        android:layout_width="141dp"
-        android:layout_height="37dp"
-        android:text=""
-
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#0041B6"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/main_word"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/player2Tablo"
-        app:layout_constraintTop_toBottomOf="@+id/player1_timer"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.042" />
 
 
     <Button
-        android:id="@+id/skip_button"
+        android:id="@+id/skipButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="40dp"
+        android:gravity="center"
         android:backgroundTint="#B0C4FD "
         android:backgroundTintMode="src_over"
-        android:text="skip"
 
+        android:text="skip"
         android:textAlignment="center"
         android:textColorHighlight="#4DC852"
+
         android:textColorLink="#4DC652"
-
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold|italic"
-        android:visibility="invisible"
 
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
-        app:layout_constraintEnd_toStartOf="@+id/start"
 
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintLeft_toRightOf="@+id/right_guideLine"
-        app:layout_constraintRight_toLeftOf="@+id/start"
         app:layout_constraintStart_toStartOf="@+id/left_guideLine"
         app:layout_constraintTop_toBottomOf="@+id/tips_of_word"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintVertical_bias="0.692" />
 
     <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="144dp"
-        android:backgroundTint="#78CD7B"
-
-        android:text="start"
-
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="normal|bold|italic"
-        app:layout_constraintBottom_toTopOf="@id/bottom_guideLine"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@id/left_guideLine"
-        app:layout_constraintRight_toLeftOf="@id/right_guideLine"
-        app:layout_constraintTop_toBottomOf="@+id/tips_of_word"
-        app:layout_constraintVertical_bias="0.69" />
-
-    <Button
-        android:id="@+id/next_button"
+        android:id="@+id/crocoButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="62dp"
+        android:layout_marginRight="40dp"
         android:backgroundTint="#5EBF63"
         android:backgroundTintMode="src_over"
+        android:gravity="center"
         android:text="CROCO"
         android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="normal|bold|italic"
+        android:textSize="20sp"
 
+        android:textStyle="normal|bold|italic"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
-        app:layout_constraintHorizontal_bias="0.826"
-        app:layout_constraintLeft_toRightOf="@+id/skip_button"
         app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
         app:layout_constraintTop_toBottomOf="@+id/tips_of_word"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintVertical_bias="0.693" />
 
     <TextView
-        android:id="@+id/player1Tablo"
+        android:id="@+id/countWordsTablo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PLAYER1: 0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#0B30B5"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/player2Tablo"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/short_stack"
+        android:text="Count words"
+        app:layout_constraintLeft_toRightOf="@+id/book"
+        app:layout_constraintRight_toLeftOf="@+id/settings"
+        app:layout_constraintTop_toBottomOf="@+id/teamTablo" />
+
+    <TextView
+        android:id="@+id/teamTablo"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="#DDDDDD"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:text="Team 1"
+        android:textColor="#0038FF"
+        android:textSize="16dp"
 
         app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
         app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
+        app:layout_constraintTop_toTopOf="@+id/top_guideLine" />
+
+    <ImageView
+        android:id="@+id/crocodil"
+        android:layout_width="239dp"
+        android:layout_height="195dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/left_guideLine"
-        app:layout_constraintTop_toBottomOf="@+id/book" />
+        app:layout_constraintTop_toBottomOf="@+id/teamTablo"
+        app:layout_constraintVertical_bias="0.638" />
 
     <TextView
-        android:id="@+id/player2Tablo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PLAYER2: 0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#0B30B5"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:id="@+id/timer"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
+        android:text="0:00"
+        android:textSize="20dp"
+
         app:layout_constraintBottom_toTopOf="@+id/main_word"
         app:layout_constraintEnd_toStartOf="@+id/right_guideLine"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toEndOf="@+id/crocodil"
+        app:layout_constraintTop_toBottomOf="@+id/settings"
+        app:layout_constraintVertical_bias="0.517"
+        tools:ignore="MissingConstraints" />
 
-        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
-        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
-        app:layout_constraintTop_toBottomOf="@+id/player1Tablo"
-        app:layout_constraintVertical_bias="0.28" />
+    <ImageButton
+        android:id="@+id/play_button"
+        android:layout_width="74dp"
+        android:layout_height="71dp"
 
-    <TextView
-        android:id="@+id/player1_gameOnline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Playing"
-        android:textColor="#000000"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/player1Tablo"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
-        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
-        app:layout_constraintStart_toStartOf="@+id/left_guideLine"/>
+        android:background="@drawable/play_button"
+        android:fontFamily="@font/short_stack"
+        android:gravity="center"
 
-    <TextView
-        android:id="@+id/player2_gameOnline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:focusableInTouchMode="false"
-        android:text="Playing"
-        android:textColor="#000000"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/player2Tablo"
-        app:layout_constraintLeft_toRightOf="@+id/left_guideLine"
-        app:layout_constraintRight_toLeftOf="@+id/right_guideLine"
-        app:layout_constraintStart_toStartOf="@+id/left_guideLine"
-        app:layout_constraintTop_toBottomOf="@+id/player1Tablo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideLine"
+        app:layout_constraintLeft_toRightOf="@+id/skipButton"
+        app:layout_constraintRight_toLeftOf="@+id/crocoButton"
+        app:layout_constraintTop_toBottomOf="@+id/tips_of_word"
+        app:layout_constraintVertical_bias="0.712"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

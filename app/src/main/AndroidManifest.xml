@@ -21,6 +21,21 @@
             android:configChanges="orientation"
             />
         <activity
+            android:name=".StatisticActivity"
+            android:exported="false"
+            android:configChanges="orientation"
+            />
+        <activity
+            android:name=".TeamNameActivity"
+            android:exported="false"
+            android:configChanges="orientation"
+            />
+        <activity
+            android:name=".RoundActivity"
+            android:exported="false"
+            android:configChanges="orientation"
+            />
+        <activity
             android:name=".SettingsActivity"
             android:label="MySettings"
             android:exported="false"
