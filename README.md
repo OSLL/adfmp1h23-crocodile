@@ -5,7 +5,7 @@
 Частично работоспособный UI(github не потянул, пришлось закинуть на диск):
 
 
-https://disk.yandex.com.tr/i/N8D307ska5Ilsg
+https://disk.yandex.ru/i/N8D307ska5Ilsg
 
 
 
