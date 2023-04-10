@@ -1,18 +1,19 @@
 # adfmp1h23-crocodile
 
+Статус: макет
 
+
+# Макет
+
+https://user-images.githubusercontent.com/22154737/229360419-0ae36464-b694-4719-b8cf-1fc8998bbcaf.mov
+
+https://www.figma.com/file/Rg9foSqbSCnaXLQRs1oRaX/Croco?node-id=0%3A1&t=rnProNHS9xUChL43-1
+
+# Просто Hello World
 
 https://user-images.githubusercontent.com/22154737/227735653-254f7f95-541c-4278-9242-d3492009f47e.mov
 
-
-Примерная работа и как выглядит примерный макет в Figma:
-
-https://user-images.githubusercontent.com/22154737/227735720-3955ae6c-c90b-42ca-94a9-2d76e3c2dfdf.mov
-
-<img width="1114" alt="Screenshot 2023-03-25 at 22 17 38" src="https://user-images.githubusercontent.com/22154737/227737134-36e4c8cd-c185-40b6-a924-7b04654d044b.png">
-
-
-План:
+# Объяснение функций
 
 Стартовое окно:
 
