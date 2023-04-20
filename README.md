@@ -1,6 +1,12 @@
-# adfmp1h23-crocodile
+# adfmp1h23-crocodile: тег 0.8
 
-Статус: макет
+Тег: 0.8
+
+Частично работоспособный UI(github не потянул, пришлось закинуть на диск):
+
+
+https://disk.yandex.ru/i/N8D307ska5Ilsg
+
 
 
 # Макет
@@ -9,9 +15,6 @@ https://user-images.githubusercontent.com/22154737/229360419-0ae36464-b694-4719-
 
 https://www.figma.com/file/Rg9foSqbSCnaXLQRs1oRaX/Croco?node-id=0%3A1&t=rnProNHS9xUChL43-1
 
-# Просто Hello World
-
-https://user-images.githubusercontent.com/22154737/227735653-254f7f95-541c-4278-9242-d3492009f47e.mov
 
 # Объяснение функций
 
