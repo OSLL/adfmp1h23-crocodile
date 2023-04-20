@@ -1,6 +1,6 @@
 # adfmp1h23-crocodile: тег UnitTests
 
-Тег: UnitTest
+Тег: UnitTests
 
 -----
 
