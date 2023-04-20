@@ -1,5 +1,6 @@
 package ru.croco.crocodile
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
@@ -16,8 +17,6 @@ import androidx.preference.PreferenceManager
 
 
 class MainActivity : AppCompatActivity() {
-    val db = DatabaseHelper(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
@@ -32,17 +31,17 @@ class MainActivity : AppCompatActivity() {
     private fun creatorDatabase() = run {
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
-
         val sharedPref = this.getSharedPreferences(
             "ru.kongosha.friends", MODE_PRIVATE
         )
 
         val isDatabaseInitializer = sharedPref
             .getBoolean("ru.kongosha.friends.IsDatabaseInitialized", false)
-//        loadDatabase()
+
         if (!isDatabaseInitializer) {
+            val db = DatabaseHelper(this)
             print("loadDatabase")
-            loadDatabase()
+            loadDatabase(db, this)
             sharedPref
                 .edit()
                 .putBoolean("ru.kongosha.friends.IsDatabaseInitialized", true)
@@ -50,16 +49,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadDatabase() = run {
-        val ins: InputStream = resources.openRawResource(
-            resources.getIdentifier(
+companion object{
+    fun loadDatabase(db: DatabaseHelper, context: Context) = run {
+        val ins: InputStream = context.resources.openRawResource(
+            context.resources.getIdentifier(
                 "db",
                 "raw",
-                this.packageName
+                context.packageName
             )
         )
         db.insertFromFile(BufferedReader(InputStreamReader(ins)))
     }
+}
 
     private fun functionalityOfButtons() = run {
 

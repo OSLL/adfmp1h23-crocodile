@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Croco</string>
     <string name="start">Start time</string>
     <string name="Back">Назад</string>
     <!-- Preference Titles -->
