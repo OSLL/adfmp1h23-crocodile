@@ -30,6 +30,7 @@ class RoundActivity : AppCompatActivity() {
         setContentView(R.layout.round)
         val roundWordsChecked = intent.getIntArrayExtra("roundWordsChecked")?.toMutableList()
         val roundWordsUnchecked = intent.getIntArrayExtra("roundWordsUnchecked")?.toMutableList()
+        println("roundWordsChecked $roundWordsChecked")
 
         val res = createCheckboxes(this, roundWordsChecked, true, db)
         checkboxes.addAll(res)

@@ -12,12 +12,12 @@ import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.RootMatchers.isDialog
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import com.google.ar.core.Config
+import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 
@@ -29,7 +29,7 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class RoundActivityTest {
     @get:Rule
-    val activityRule = ActivityScenarioRule(RoundActivity::class.java)
+    val activityRule = ActivityTestRule(RoundActivity::class.java)
 
     private lateinit var db: DatabaseHelper
 
@@ -55,11 +55,26 @@ class RoundActivityTest {
             .check(matches(withText("OK")))
     }
 
-//    @Test
-//    fun checkboxIsClick() {
-//        val i = Intent()
-//        onView(withId(R.id.ok_button))
-//            .check(matches(isDisplayed()))
-//            .check(matches(withText("OK")))
-//    }
+    @Test
+    fun checkboxIsClick() {
+        val i = Intent()
+        val roundWordsChecked = mutableListOf(1,2)
+        val roundWordsUnchecked = mutableListOf(3,4)
+        i.putExtra("roundWordsChecked", roundWordsChecked.toIntArray())
+        i.putExtra("roundWordsUnchecked", roundWordsUnchecked.toIntArray())
+        activityRule.launchActivity(i)
+        onView(withText("Absence"))
+            .check(matches(isChecked()))
+            .perform(click())
+            .check(matches(not(isChecked())))
+
+        onView(withText("Answer"))
+            .check(matches(not(isChecked())))
+            .perform(click())
+            .check(matches(isChecked()))
+
+        onView(withId(R.id.ok_button))
+            .check(matches(isDisplayed()))
+            .check(matches(withText("OK")))
+    }
 }
