@@ -1,5 +1,6 @@
 package ru.croco.crocodile
 
+import android.content.Intent
 import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
@@ -15,6 +16,7 @@ import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.not
 import org.junit.After
@@ -29,7 +31,7 @@ import java.io.IOException
 class GameActivityTest {
 
     @get:Rule
-    val activityRule = ActivityScenarioRule(GameActivity::class.java)
+    val activityRule = ActivityTestRule(GameActivity::class.java)
 
     @Before
     fun startTest() {
@@ -174,7 +176,7 @@ class GameActivityTest {
             .perform(click())
 
         onView(withId(R.id.crocoButton))
-            .check(matches(withText("STATISTIC")))
+            .check(matches(withText("Statistic")))
             .perform(click())
         intended(IntentMatchers.hasComponent(StatisticActivity::class.java.name))
     }

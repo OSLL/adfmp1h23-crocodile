@@ -59,7 +59,7 @@ class GameActivity : AppCompatActivity() {
         getTeamNames()
 
         val countOfWord = intent.getIntExtra("countWords", 5)
-        val timeCounts = intent.getLongExtra("timerTime", 5)
+        val timeCounts = intent.getLongExtra("timerTime", 10)
 
         crocodil.setBackgroundResource(R.drawable.croco_run_animation)
 
@@ -94,7 +94,7 @@ class GameActivity : AppCompatActivity() {
     fun timer(): SonicCountDownTimer {
         val width = Resources.getSystem().displayMetrics.widthPixels
 
-        val timeFinishedAlertDialogBuilder= getAlertForNextTeam()
+        val timeFinishedAlertDialogBuilder = getAlertForNextTeam()
         val frameAnimation: AnimationDrawable = crocodil.getBackground() as AnimationDrawable
 
         return object : SonicCountDownTimer(time * 1000, 1000) {
@@ -122,7 +122,9 @@ class GameActivity : AppCompatActivity() {
                             }"
                         )
                         .create()
-                    alert.show()
+                    if (!isFinishing) {
+                        alert.show()
+                    }
                 }
                 isGameActive = false
                 isGameInPause = false
@@ -143,6 +145,7 @@ class GameActivity : AppCompatActivity() {
         }
 
     }
+
     private fun getAlertForNextTeam(): AlertDialog.Builder {
         return AlertDialog.Builder(this)
             .setTitle("Round finished")
@@ -257,7 +260,9 @@ class GameActivity : AppCompatActivity() {
                     val r = countWordsFinishefAlertDialog
                         .setMessage("Congratulations!!! $winnerTeam is win \n Result: $playerBall1 / $playerBall2")
                         .create()
-                    r.show()
+                    if (!isFinishing) {
+                        r.show()
+                    }
                 }
             } else if (isAllGameFinished) {
                 val i = Intent(this, StatisticActivity::class.java)
@@ -272,7 +277,10 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun setDataFromNote(randomIdFromChooseWord: Random, allWordsIds: HashMap<Int, Note>): Int {
+    private fun setDataFromNote(
+        randomIdFromChooseWord: Random,
+        allWordsIds: HashMap<Int, Note>
+    ): Int {
         val keys: List<Int> = allWordsIds.keys.toList()
         val randomInt = randomIdFromChooseWord.nextInt(keys.size)
         val randomKey = keys[randomInt]
