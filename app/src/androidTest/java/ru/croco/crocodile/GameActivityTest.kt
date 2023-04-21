@@ -47,8 +47,8 @@ class GameActivityTest {
         onView(withText("OK"))
             .inRoot(RootMatchers.isDialog()) // <---
             .check(matches(isDisplayed()))
-            .perform(ViewActions.click())
-        onView(withId(R.id.countWordsTablo)).check(matches(withText("Count words: 50")))
+            .perform(click())
+        onView(withId(R.id.countWordsTablo)).check(matches(withText("Count words: 5")))
     }
 
     @Test
