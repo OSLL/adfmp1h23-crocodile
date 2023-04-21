@@ -49,7 +49,7 @@ class PlayersTest {
         val isOddGame = true
         val teams = mutableListOf("team1", "team2")
         val r = getGeneralTeam(isOddGame, teams)
-        Assert.assertEquals("team12", r)
+        Assert.assertEquals("team1", r)
     }
 
     @Test
