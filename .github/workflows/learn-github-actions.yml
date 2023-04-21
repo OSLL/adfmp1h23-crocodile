@@ -1,3 +1,7 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+
 jobs:
   connected-tests:
     runs-on: macos-latest
@@ -20,3 +24,4 @@ jobs:
           target: google_apis
           arch: x86_64
           script: ./gradlew connectedCheck
+
