@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running tests
 on: [push]
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-  connected-tests:
+  espresso-tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -34,11 +34,11 @@ jobs:
           cache: 'gradle'
         
       - name: Run connected tests
-        uses: ReactiveCircus/android-emulator-runner@v2
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          script: ./gradlew connectedCheck
+          api-level: 31
+          target: default
+          arch: x86
+          script: ./gradlew connectedCheck --stacktrace
 
 
