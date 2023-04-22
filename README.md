@@ -1,4 +1,8 @@
-# adfmp1h23-crocodile: тег UnitTests
+# adfmp1h23-crocodile: тег App is Ready
+
+Видео работы приложения при статусе "App is ready":
+
+https://disk.yandex.ru/i/sAp5yASnezj8mQ
 
 Тег: UnitTests
 
