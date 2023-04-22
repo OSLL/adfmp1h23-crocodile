@@ -21,6 +21,7 @@ class StatisticActivity : AppCompatActivity() {
         setContentView(R.layout.statistic)
 
         val roundResults = intent.getIntArrayExtra("roundResults")
+
         val teamName1 = intent.getStringExtra("teamName1")
         val teamName2 = intent.getStringExtra("teamName2")
         val generalResult1 = intent.getIntExtra("teamName1Res", 0)
@@ -32,13 +33,13 @@ class StatisticActivity : AppCompatActivity() {
         var roundNumberOdd = 1
         var roundNumberNoOdd = 1
         if (roundResults != null) {
-            for (result in roundResults) {
+            for (i in 1 until roundResults.size) {
                 val textView = TextView(this)
                 if (isOdd) {
-                    textView.text = "Round $roundNumberOdd $teamName1 : $result"
+                    textView.text = "Round $roundNumberOdd $teamName1 : ${roundResults[i]}"
                     roundNumberOdd++
                 } else {
-                    textView.text = "Round $roundNumberNoOdd $teamName2 : $result"
+                    textView.text = "Round $roundNumberNoOdd $teamName2 : ${roundResults[i]}"
                     roundNumberNoOdd++
                 }
                 isOdd = isOdd.not()

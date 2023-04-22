@@ -36,7 +36,6 @@ class GameActivity : AppCompatActivity() {
     var teamName1 = ""
     var teamName2 = ""
     var roundResults = mutableListOf<Int>()
-    var countCrocoInRound = 0
     var isOddGame = true
     var isAnimationCroco = true
 
@@ -142,8 +141,6 @@ class GameActivity : AppCompatActivity() {
                     skipButton.text = "Fix Up"
                     teamTablo.text = getGeneralTeam(isOddGame, teams)
                 }
-                roundResults.add(countCrocoInRound)
-                countCrocoInRound = 0
                 main_word.text = "STOP GAME"
                 tips_of_word.text = "Time finished for ${getGeneralTeam(isOddGame.not(), teams)}."
             }
@@ -194,6 +191,13 @@ class GameActivity : AppCompatActivity() {
         }
         play_button.setOnClickListener {
             if (!isGameActive) {
+                if (isOddGame.not()) {
+                    playerBall1 += roundWordsChecked.size
+                } else {
+                    playerBall2 += roundWordsChecked.size
+                }
+                roundResults.add(roundWordsChecked.size)
+
                 val sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this)
                 isAnimationCroco = sharedPref2.getBoolean("animation_croco", true)
                 if (sharedPref2.getBoolean("example_switch", true)) {
@@ -259,12 +263,12 @@ class GameActivity : AppCompatActivity() {
             if (isGameActive && !isGameInPause) {
                 roundWordsChecked.add(currentWordId)
                 allWordsIds.remove(currentWordId)
-                if (isOddGame) {
-                    playerBall1++
-                } else {
-                    playerBall2++
-                }
-                countCrocoInRound++
+//                if (isOddGame) {
+//                    playerBall1++
+//                } else {
+//                    playerBall2++
+//                }
+//                countCrocoInRound++
                 countWordsTablo.text = "Count words: ${allWordsIds.size}"
                 if (allWordsIds.size != 0) {
                     currentWordId = setDataFromNote(randomIdFromChooseWord, allWordsIds)
@@ -278,6 +282,14 @@ class GameActivity : AppCompatActivity() {
                     timer.visibility = View.INVISIBLE
 
                     countDownTimer.stopCountDownTimer()
+
+                    if (isOddGame.not()) {
+                        playerBall1 += roundWordsChecked.size
+                    } else {
+                        playerBall2 += roundWordsChecked.size
+                    }
+                    roundResults.add(roundWordsChecked.size)
+                    
                     crocoButton.visibility = View.VISIBLE
                     crocoButton.text = "Statistic"
                     val winnerTeam = if (playerBall1 > playerBall2) {
@@ -296,6 +308,7 @@ class GameActivity : AppCompatActivity() {
                     }
                 }
             } else if (isAllGameFinished) {
+
                 val i = Intent(this, StatisticActivity::class.java)
                 i.putExtra("roundResults", roundResults.toIntArray())
                 i.putExtra("teamName1", teamName1)
@@ -365,7 +378,6 @@ class GameActivity : AppCompatActivity() {
         skipButton.visibility = View.VISIBLE
         timer.visibility = View.VISIBLE
         main_word.visibility = View.VISIBLE
-//        tips_of_word.visibility = View.VISIBLE
     }
 
     fun nonActiveGameState() {
