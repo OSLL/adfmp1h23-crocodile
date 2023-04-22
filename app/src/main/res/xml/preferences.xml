@@ -3,19 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
-        android:id="@+id/tips_switch"
         android:defaultValue="true"
         android:title="Tips of word"
         android:key="example_switch"
         android:summary="Turn this option on or off" />
-    <EditTextPreference
-        android:id="@+id/time_word"
-        android:inputType="numberDecimal"
-        android:digits="0123456789"
-        android:defaultValue="60"
-        android:key="time_settings"
-        android:title="Time"
-        android:summary="Put your time"
-        android:maxLength="300"
-        tools:ignore="Deprecated" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="Animation croco"
+        android:key="animation_croco"
+        android:summary="Turn this option on or off \n it will apply on the next round." />
 </PreferenceScreen>

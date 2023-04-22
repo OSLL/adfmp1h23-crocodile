@@ -25,8 +25,8 @@ class GameActivity : AppCompatActivity() {
     val db = DatabaseHelper(this)
     var time: Long = 10
 
-    var roundWordsChecked = mutableListOf<Int>()
-    var roundWordsUnchecked = mutableListOf<Int>()
+    var roundWordsChecked = mutableSetOf<Int>()
+    var roundWordsUnchecked = mutableSetOf<Int>()
     var allWordsIds: HashMap<Int, Note> = HashMap()
     var isGameActive = false
     var isGameInPause = false
@@ -38,6 +38,7 @@ class GameActivity : AppCompatActivity() {
     var roundResults = mutableListOf<Int>()
     var countCrocoInRound = 0
     var isOddGame = true
+    var isAnimationCroco = true
 
 
     @SuppressLint("SetTextI18n")
@@ -69,8 +70,8 @@ class GameActivity : AppCompatActivity() {
         allWordsIds = getWordsFromDB(countOfWord, db)
 
         val startAlertDialog: AlertDialog = AlertDialog.Builder(this)
-            .setTitle("Hello!!!")
-            .setMessage("First command: $teamName1")
+            .setTitle("Turn order")
+            .setMessage("Team '$teamName1'! It is your round. Are you ready?")
             .setPositiveButton(android.R.string.yes,
                 DialogInterface.OnClickListener { dialog, which ->
                     // Continue with delete operation
@@ -102,8 +103,10 @@ class GameActivity : AppCompatActivity() {
             override fun onTimerTick(timeRemaining: Long) {
                 val minutes = (timeRemaining / 1000) / 60
                 val seconds = (timeRemaining / 1000) % 60
-                crocodil.x += (width / time - 0.5).toFloat()
-                frameAnimation.start()
+                if(isAnimationCroco) {
+                    crocodil.x += (width / time - 0.5).toFloat()
+                    frameAnimation.start()
+                }
                 timer.text = String.format("%d:%02d", minutes, seconds)
                 isRoundFinished = false
                 skipButton.text = "Skip"
@@ -130,7 +133,9 @@ class GameActivity : AppCompatActivity() {
                 isGameInPause = false
                 play_button.setBackgroundResource(R.drawable.play_button)
                 nonActiveGameState()
-                frameAnimation.stop()
+                if (isAnimationCroco) {
+                    frameAnimation.stop()
+                }
                 isRoundFinished = true
                 if (!isAllGameFinished) {
                     skipButton.visibility = View.VISIBLE
@@ -162,7 +167,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun getAlertForFinishWords(): AlertDialog.Builder {
         return AlertDialog.Builder(this)
-            .setTitle("Words finished!!!")
+            .setTitle("Words finished            !!!")
             .setPositiveButton(android.R.string.yes,
                 DialogInterface.OnClickListener { dialog, which ->
                     // Continue with delete operation
@@ -189,20 +194,41 @@ class GameActivity : AppCompatActivity() {
         }
         play_button.setOnClickListener {
             if (!isGameActive) {
-                activeGameState()
-                crocodil.x = -800F
+                val sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this)
+                isAnimationCroco = sharedPref2.getBoolean("animation_croco", true)
+                if (sharedPref2.getBoolean("example_switch", true)) {
+                    tips_of_word.visibility = View.VISIBLE
+                } else {
+                    tips_of_word.visibility = View.INVISIBLE
+                }
+
                 currentWordId = setDataFromNote(randomIdFromChooseWord, allWordsIds)
+                activeGameState()
+                if (isAnimationCroco) {
+                    crocodil.x = -800F
+                }
                 countDownTimer.startCountDownTimer()
-                roundWordsChecked = mutableListOf()
-                roundWordsUnchecked = mutableListOf()
+                roundWordsChecked = mutableSetOf()
+                roundWordsUnchecked = mutableSetOf()
                 isGameActive = isGameActive.not()
                 play_button.setBackgroundResource(R.drawable.pause_button)
+
+
             } else if (isGameActive && isGameInPause) {
                 activeGameState()
                 countDownTimer.resumeCountDownTimer()
                 play_button.setBackgroundResource(R.drawable.pause_button)
                 isGameInPause = isGameInPause.not()
-                frameAnimation.start()
+                if (isAnimationCroco) {
+                    frameAnimation.start()
+                }
+                val sharedPref2 = PreferenceManager.getDefaultSharedPreferences(this)
+                println("sharedPref: ${sharedPref2.getBoolean("example_switch", true)}")
+                if (sharedPref2.getBoolean("example_switch", true)) {
+                    tips_of_word.visibility = View.VISIBLE
+                } else {
+                    tips_of_word.visibility = View.INVISIBLE
+                }
             } else if (isGameActive && !isGameInPause) {
                 nonActiveGameState()
                 play_button.setBackgroundResource(R.drawable.play_button)
@@ -210,12 +236,15 @@ class GameActivity : AppCompatActivity() {
                 isGameInPause = isGameInPause.not()
                 main_word.visibility = View.INVISIBLE
                 tips_of_word.visibility = View.INVISIBLE
-                frameAnimation.stop()
+
+                if (isAnimationCroco) {
+                    frameAnimation.stop()
+                }
             }
         }
 
         skipButton.setOnClickListener {
-            if (isGameActive) {
+            if (isGameActive && !isGameInPause) {
                 roundWordsUnchecked.add(currentWordId)
                 currentWordId = setDataFromNote(randomIdFromChooseWord, allWordsIds)
             } else if (isRoundFinished) {
@@ -227,7 +256,7 @@ class GameActivity : AppCompatActivity() {
         }
 
         crocoButton.setOnClickListener {
-            if (isGameActive) {
+            if (isGameActive && !isGameInPause) {
                 roundWordsChecked.add(currentWordId)
                 allWordsIds.remove(currentWordId)
                 if (isOddGame) {
@@ -241,7 +270,9 @@ class GameActivity : AppCompatActivity() {
                     currentWordId = setDataFromNote(randomIdFromChooseWord, allWordsIds)
                 } else {
                     nonActiveGameState()
-                    frameAnimation.stop()
+                    if (isAnimationCroco) {
+                        frameAnimation.stop()
+                    }
                     isAllGameFinished = true
                     play_button.visibility = View.INVISIBLE
                     timer.visibility = View.INVISIBLE
@@ -299,16 +330,24 @@ class GameActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
             if (resultCode == 10) {
-                val uncheckedWords = data.getIntArrayExtra("uncheckedWords")?.toSet()
-                val checkedWords = data.getIntArrayExtra("checkedWords")?.toSet()
-                if (uncheckedWords != null && checkedWords != null) {
-                    for (idx in uncheckedWords) {
+                roundWordsUnchecked = if (data.getIntArrayExtra("uncheckedWords")?.size == 0) {
+                    mutableSetOf()
+                } else {
+                    data.getIntArrayExtra("uncheckedWords")?.toSet() as MutableSet<Int>
+                }
+                roundWordsChecked = if (data.getIntArrayExtra("checkedWords")?.size == 0) {
+                    mutableSetOf()
+                } else {
+                    data.getIntArrayExtra("checkedWords")?.toSet() as MutableSet<Int>
+                }
+                if (roundWordsUnchecked != null && roundWordsChecked != null) {
+                    for (idx in roundWordsUnchecked) {
                         if (!allWordsIds.containsKey(idx)) {
                             val note = db.getNote(idx.toLong())
                             allWordsIds[idx] = note
                         }
                     }
-                    for (idx in checkedWords) {
+                    for (idx in roundWordsChecked) {
                         if (allWordsIds.containsKey(idx)) {
                             allWordsIds.remove(idx)
                         }
@@ -326,7 +365,7 @@ class GameActivity : AppCompatActivity() {
         skipButton.visibility = View.VISIBLE
         timer.visibility = View.VISIBLE
         main_word.visibility = View.VISIBLE
-        tips_of_word.visibility = View.VISIBLE
+//        tips_of_word.visibility = View.VISIBLE
     }
 
     fun nonActiveGameState() {
